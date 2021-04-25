@@ -130,3 +130,6 @@ dmypy.json
 
 # raw data
 /data/raw
+
+# model archive
+/models/_archive
