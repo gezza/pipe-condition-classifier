@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIPE CONDITION CLASSIFIER</title>
+    <title>PIPE CONDITION</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,17 +11,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Pipe Condition Classifier <span class="fa fa-tint"></span></h1>
+    <h1><span class="fa fa-home"></span> Pipe Condition DETAILS <span class="fa fa-tint"></span></h1>
     <hr>
+    <div style="font-weight: bold;">
+        <label for="yearBuilt">Year Built:&nbsp;</label>
+        <input type="number" id="yearBuilt" name="yearBuilt" min="1900" max="2021" required />
+        &nbsp;&nbsp;
+        <label for="proof">Room:&nbsp;</label>
+        <select name="room" id="room">
+            <option value="kitchen" selected>Bathroom</option>
+            <option value="kitchen">Kitchen</option>
+        </select>
 
-    <div class="upload-btn-wrapper">
+        <br />
+        <label for="proof">Proof of Repairs:&nbsp;</label>
+        <select name="proof" id="proof">
+            <option value="no-proof">No proof of good condition</option>
+            <option value="4point">4-point Inspection Showing Pipes in good condition or updated</option>
+            <option value="sales-inspection">Sales Inspection from Closing Showing Pipes in good condition or updated</option>
+            <option value="appraisal">Appraisal showing Pipes in good condition or updated</option>
+            <option value="bill-of-sale">Bill of Sale showing Pipes are updated</option>
+            <option value="contractors-recipe">Contractors Recipe showing pipes are updated</option>
+            <option value="customer-pics">Customer pictures showing good condition or replacement of pipes</option>
+            <option value="other-docs">Any documentation showing pipes are replaced, repaired, or in good condition</option>
+        </select>
+    </div>  
+
+    <div class="recRow" id="recBlock" style="display: none;">
+        <h2 style="color: rgb(211, 109, 14)">RECOMMENDATION</h2>
+        <h4 class="recommendation"></h4>
+    </div>
+
+    <div class="upload-btn-wrapper" style="display: none;">
         <button class="btn upload-file font-weight-500">
             <span class="upload-btn">
                 <i class="material-icons d-block font-50 pb-2">cloud_upload</i>
-                <p id="choose-text-1">Upload an image of pipes</p>
-            </span>
-            <span class="upload-select-button" id="blankFile-1">
-                *Supports .png, .jpg, .jpeg, .jfif
+                <p id="choose-text-1">Upload an image of the under sink pipes</p>
             </span>
             <span class="success-1">
                 <i class="material-icons text-success">check</i>
@@ -30,17 +55,30 @@
         <input type="file" name="uploadImage" id="uploadImage">
     </div>
 
-    <!--<input type="file" name="uploadImage" id="uploadImage" accept=".png, .jpg, .jpeg">-->
-    <div class="row">
+    <div class="row" id="resultRow">
         <div class="box">
             <img src="TransparentPlaceholder.png" alt="" id="image" alt="no image uploaded" width="150" height="150" style="display: block">
+            <span class="filename"></span>
         </div>
 
         <div class="box box-result">
             <div class="init_status"></div>
-            <div>
-                <h2>The pipe condition is: <span class="pred_class"></span></h2>
+            <div style="text-align: center;">
+                <br /><br />
+                <h3>The pipe condition is...</h3>
+                <h1 class="pred_class"></h1>
+                <br />
             </div>
+            <div class="agreeRadioButtons">
+                <h3>Do you agree with this prediction?</h3>
+                <br />
+                <input type="radio" name="agreeDisagree" id="agree" />
+                <label for="agree">YES</label>
+                <input type="radio" name="agreeDisagree" id="disagree" />
+                <label for="disagree">NO</label>
+            </div>
+            
+            <!--
             <div class="accuracy">
                 <div class="progress" id="progress">
                     <div class="inner">
@@ -48,13 +86,13 @@
                     </div>
                   </div>
             </div>
+            -->
         </div>
     </div>
-
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.0.1/tf.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
-    <script src="classifier.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
