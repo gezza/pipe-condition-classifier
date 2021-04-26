@@ -100,13 +100,18 @@ proof.addEventListener('change', function(e){
     if (proof.options[proof.selectedIndex].value == "customer-pics") {
         document.querySelector(".upload-btn-wrapper").style.display = 'block';
         recBlock.style.display = 'none';
-        resultRow.style.display = 'flex'
+        resultRow.style.display = 'flex';
+    }
+    else if (proof.options[proof.selectedIndex].value == "no-proof") {
+        document.querySelector(".upload-btn-wrapper").style.display = 'none';
+        recBlock.style.display = 'none';
+        resultRow.style.display = 'none';
     }
     else {
         document.querySelector(".upload-btn-wrapper").style.display = 'none';
         recBlock.style.display = 'block';
-        resultRow.style.display = 'none'
-        recommendation.innerHTML = recommendations["all-good"]
+        resultRow.style.display = 'none';
+        recommendation.innerHTML = recommendations["all-good"];
     }
 })
 
