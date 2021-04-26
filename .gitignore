@@ -134,5 +134,7 @@ dmypy.json
 # raw data
 /data/raw
 
-# ml models
-/models/
+# ml models & archive
+models/_archive
+*.h5
+*.hdf5
